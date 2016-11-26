@@ -1,0 +1,26 @@
+{
+    "name": "crphp/check",
+    "type": "library",
+    "description": "Está é uma biblioteca genérica voltada a efetuar testes/verificação de conectividade",
+    "keywords": ["traceroute", "tracert", "ping", "health check", "socket"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/crphp/check/issues",
+        "source": "https://github.com/crphp/check"
+    },
+    "authors": [
+        {
+            "name": "Fábio Jânio",
+            "email": "contato@fabiojanio.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crphp\\Check\\": "src/"
+            }
+    },
+    "minimum-stability": "dev"
+}

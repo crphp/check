@@ -1,0 +1,5 @@
+/vendor
+/nbproject
+.DS_Store
+/testes
+composer.lock
