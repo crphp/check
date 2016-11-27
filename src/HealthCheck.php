@@ -22,6 +22,13 @@ class HealthCheck
     private $curl;
     
     /**
+     * Armazena as informações referentes a requisição
+     * 
+     * @var array
+     */
+    private $info;
+    
+    /**
      * Conteúdo da URL consultada
      *
      * @var string 
@@ -91,9 +98,21 @@ class HealthCheck
     public function run()
     {
         $this->html = curl_exec($this->curl);
-        $code = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $this->info = curl_getinfo($this->curl); 
         curl_close($this->curl);
-        return $code;
+        return $this->info['http_code'];
+    }
+    
+    /**
+     * Informações da requisição obtidos do método curl_getinfo
+     * 
+     * @see http://php.net/manual/pt_BR/function.curl-getinfo.php
+     * 
+     * @return array
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
         
     /**
