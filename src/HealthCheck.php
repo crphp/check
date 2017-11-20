@@ -7,7 +7,7 @@
  * @subpackage  check
  * @author      Fábio J L Ferreira <contato@fabiojanio.com>
  * @license     MIT (consulte o arquivo license disponibilizado com este pacote)
- * @copyright   (c) 2016, Fábio J L Ferreira
+ * @copyright   (c) 2016-2017, Fábio J L Ferreira
  */
 
 namespace Crphp\Check;
@@ -60,6 +60,7 @@ class HealthCheck
     {
         curl_setopt($this->curl, CURLOPT_URL, $url);
         curl_setopt($this->curl, CURLOPT_TIMEOUT, $timeout);
+        return $this;
     }
     
     /**
@@ -71,6 +72,7 @@ class HealthCheck
     public function setAgent($agente = "PHP Health Check")
     {
         curl_setopt($this->curl, CURLOPT_USERAGENT, $agente);
+        return $this;
     }
     
     /**
@@ -88,6 +90,7 @@ class HealthCheck
         curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, $redirect);
         curl_setopt($this->curl, CURLOPT_MAXREDIRS, $numRedirect);
         curl_setopt($this->curl, CURLOPT_AUTOREFERER, $refresh);
+        return $this;
     }
 
     /**

@@ -50,6 +50,8 @@ Caso ainda não tenha o composer instalado, obtenha este em: https://getcomposer
 
 ## 5 - <a id="exemplos"></a>Exemplos de uso
 
+**Obs:** este é um exemplo simples, funcionalidades adicionais estão disponíveis em cada pacote.
+
 **Health Check**:
 ```php
 use Crphp\Check\HealthCheck;
@@ -60,17 +62,27 @@ $obj->setURL("http://www.terra.com.br");
 $obj->setAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50"); //opcional
 $obj->setRedirect();
 $statusHttp = $obj->run();
-$stringEncontrada = $obj->buscarString('esportes');
-var_dump($statusHttp, $stringEncontrada);
+var_dump($statusHttp, $obj->buscarString('esportes'));
+
+\\ ou fluent interface
+use Crphp\Check\HealthCheck;
+
+$obj = new HealthCheck;
+
+$statusHttp = $obj->setURL("http://www.terra.com.br")
+                    ->setAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50")
+                    ->setRedirect()
+                    ->run();
+
+var_dump($statusHttp, $obj->buscarString('esportes'));
 ```
 
 **Ping**
 ```php
 use Crphp\Check\Ping;
 
-$obj = new Ping;
-$output = $obj->run('www.google.com.br');
-echo ($output) ? $obj->toString($output) : 'Destino não encontrado';
+$output = Ping::run('www.google.com.br');
+echo ($output) ? Ping::toString($output) : 'Destino não encontrado';
 ```
 
 **Socket**
@@ -85,9 +97,8 @@ echo $obj->run('www.google.com.br', 22) ? 'Tudo ok ;)' : $obj->getMensagem();
 ```php
 use Crphp\Check\Traceroute;
 
-$obj = new Traceroute;
-$output = $obj->run("www.google.com.br", 3);
-echo ($output) ? $obj->toString($output) : 'Destino não encontrado';
+$output = Traceroute::run("www.google.com.br", 3); // endereço e total de saltos
+echo ($output) ? Traceroute::toString($output) : 'Destino não encontrado';
 ```
 
 ## 6 - <a id="licenca">Licença (MIT)

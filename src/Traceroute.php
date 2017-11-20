@@ -7,7 +7,7 @@
  * @subpackage  check
  * @author      Fábio J L Ferreira <contato@fabiojanio.com>
  * @license     MIT (consulte o arquivo license disponibilizado com este pacote)
- * @copyright   (c) 2016, Fábio J L Ferreira
+ * @copyright   (c) 2016-2017, Fábio J L Ferreira
  */
 
 namespace Crphp\Check;
@@ -21,7 +21,7 @@ class Traceroute
      * @param   int         $totalSaltos
      * @return  array|null  em caso de sucesso retorna uma string
      */
-    public function run($destino, $totalSaltos = 15)
+    public static function run($destino, $totalSaltos = 15)
     {        
         // Se o servidor for Windows executa este comando
         exec("tracert -h {$totalSaltos} {$destino}", $output, $status);
@@ -41,7 +41,7 @@ class Traceroute
      * @param array $tracert
      * @return string
      */
-    public function toString(Array $tracert)
+    public static function toString(Array $tracert)
     {
         $var = "";
         foreach ($tracert as $linha)

@@ -7,7 +7,7 @@
  * @subpackage  check
  * @author      Fábio J L Ferreira <contato@fabiojanio.com>
  * @license     MIT (consulte o arquivo license disponibilizado com este pacote)
- * @copyright   (c) 2016, Fábio J L Ferreira
+ * @copyright   (c) 2016 - 2017, Fábio J L Ferreira
  */
 
 namespace Crphp\Check;
@@ -38,12 +38,12 @@ class Socket
              * @see https://msdn.microsoft.com/en-us/library/windows/desktop/ms740668(v=vs.85).aspx
              */
             $dic = [
-                110   => "Time Out ao tentar se conectar ao destino: <b>{$host}</b>",
-                113   => "Não existem rotas para o destino: <b>{$host}</b>",
-                10056 => "Já existe uma conexão socket aberta para o host <b>{$host}</b>",
-                10057 => "Não foi possível conectar ao socket na chamada do host <b>{$host}</b>",
-                10060 => "Time Out ao tentar se conectar ao destino: <b>{$host}</b>",
-                10061 => "Conexão recusada pelo destino: <b>{$host}</b>"
+                110   => "Time Out ao tentar se conectar ao destino: <strong>{$host}</strong>",
+                113   => "Não existem rotas para o destino: <strong>{$host}</storng>",
+                10056 => "Já existe uma conexão socket aberta para o host <strong>{$host}</storng>",
+                10057 => "Não foi possível conectar ao socket na chamada do host <strong>{$host}</storng>",
+                10060 => "Time Out ao tentar se conectar ao destino: <strong>{$host}</storng>",
+                10061 => "Conexão recusada pelo destino: <strong>{$host}<storng>>"
             ];
 
             if(!$socket = @fsockopen($host, $porta, $errno, $errstr, $timeout)) {
@@ -53,7 +53,6 @@ class Socket
 
             fclose($socket); // Fecha o socket aberto anteriormente
             return true;
-        
         } catch (RuntimeException $e) {
             $this->mensagem = $e->getMessage();
             return false;

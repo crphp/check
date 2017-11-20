@@ -3,3 +3,4 @@
 .DS_Store
 /testes
 composer.lock
+._*
