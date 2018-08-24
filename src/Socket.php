@@ -7,7 +7,7 @@
  * @subpackage  check
  * @author      Fábio J L Ferreira <contato@fabiojanio.com>
  * @license     MIT (consulte o arquivo license disponibilizado com este pacote)
- * @copyright   (c) 2016 - 2017, Fábio J L Ferreira
+ * @copyright   (c) 2016-2018, Fábio J L Ferreira
  */
 
 namespace Crphp\Check;
@@ -17,21 +17,15 @@ use \RuntimeException;
 class Socket
 {
     /**
-     * Armazena a(s) mensagens de erro
-     * 
-     * @var string 
-     */
-    private $mensagem;
-    
-    /**
-     * Dispara o teste de conexão
+     * Dispara o teste de conexão.
      * 
      * @param   string  $host
-     * @param   int     $porta
-     * @param   int     $timeout
-     * @return  bool
+     * @param   int     $port
+     * @param   int     $timeout    Tempo em segundos.
+     *
+     * @return  true|string         Para sucesso retorna true, já para erro retorna uma string.
      */
-    public function run($host, $porta, $timeout = 10)
+    public static function run($host, $port, $timeout = 10)
     {
         try {
             /**
@@ -46,28 +40,16 @@ class Socket
                 10061 => "Conexão recusada pelo destino: <strong>{$host}<storng>>"
             ];
 
-            if(!$socket = @fsockopen($host, $porta, $errno, $errstr, $timeout)) {
-                $mensagem = (array_key_exists($errno, $dic)) ? strtr($errno, $dic) : $errstr;
-                throw new RuntimeException("Erro ({$errno}): {$mensagem}");
+            if (! $socket = @fsockopen($host, $port, $errno, $errstr, $timeout)) {
+                $msg = (array_key_exists($errno, $dic)) ? strtr($errno, $dic) : $errstr;
+                throw new RuntimeException("Erro ({$errno}): {$msg}");
             }
 
-            fclose($socket); // Fecha o socket aberto anteriormente
+            /** @internal Fecha o socket para liberar o recurso */
+            fclose($socket);
             return true;
         } catch (RuntimeException $e) {
-            $this->mensagem = $e->getMessage();
-            return false;
-        }
-    }
-    
-    /**
-     * Retorna a mensagem de erro de conexão caso exista
-     * 
-     * @return string|null
-     */
-    public function getMensagem()
-    {
-        if($this->mensagem) {
-            return $this->mensagem;
+            return $e->getMessage();
         }
     }
 }

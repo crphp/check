@@ -91,11 +91,11 @@ if (is_array($output)) {
 ```
 
 **Socket**
-```php
+```
 use Crphp\Check\Socket;
 
-$obj = new Socket;
-echo $obj->run('www.google.com.br', 22) ? 'Tudo ok ;)' : $obj->getMensagem();
+$result = Socket::run( 'www.google.com.br', 80);
+echo ($result === true) ? 'Tudo ok ;)' : $result;
 ```
 
 **Traceroute/Tracert**
