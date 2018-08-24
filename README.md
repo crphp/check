@@ -78,11 +78,16 @@ var_dump($statusHttp, $obj->buscarString('esportes'));
 ```
 
 **Ping**
-```php
+```
 use Crphp\Check\Ping;
 
 $output = Ping::run('www.google.com.br');
-echo ($output) ? Ping::toString($output) : 'Não foi possível executar o ping.';
+
+if (is_array($output)) {
+    echo '<pre>' . Ping::toString($output) . '</pre>';
+} else {
+    echo 'Não foi possível executar o ping';
+}
 ```
 
 **Socket**
