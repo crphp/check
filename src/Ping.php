@@ -8,7 +8,7 @@
  * @subpackage  check
  * @author      Fábio J L Ferreira <contato@fabiojanio.com>
  * @license     MIT (consulte o arquivo license disponibilizado com este pacote)
- * @copyright   (c) 2016-2017, Fábio J L Ferreira
+ * @copyright   (c) 2016-2018, Fábio J L Ferreira
  */
 
 namespace Crphp\Check;
@@ -24,13 +24,10 @@ class Ping
      */
     public static function run($destino, $totalPings = 5)
     {
-        // Se o servidor for Windows executa este comando
-        exec("ping -n {$totalPings} {$destino}", $output, $status);
+        // Verifica se o servidor é Windows
+        $opcao = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? '-n' : '-c';
 
-        if (!$output) {
-            // Se o servidor for "Linux" executa este comando
-            exec("ping -c {$totalPings} {$destino}", $output, $status);
-        }
+        exec("ping {$opcao} {$totalPings} {$destino}", $output, $status);
 
         // se obtiver sucesso retorna um array com os dados do teste
         return ($status == 0) ? $output : null;
