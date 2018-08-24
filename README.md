@@ -99,11 +99,16 @@ echo ($result === true) ? 'Tudo ok ;)' : $result;
 ```
 
 **Traceroute/Tracert**
-```php
+```
 use Crphp\Check\Traceroute;
 
-$output = Traceroute::run("www.google.com.br", 3); // endereço e total de saltos
-echo ($output) ? Traceroute::toString($output) : 'Destino não encontrado';
+$output = Traceroute::run("google.com.br", 2);
+
+if (is_array($output)) {
+    echo '<pre>' . Traceroute::toString($output) . '</pre>';
+} else {
+    echo 'Não foi possível executar o tracer';
+}
 ```
 
 ## 6 - <a id="licenca">Licença (MIT)
