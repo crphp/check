@@ -4,3 +4,4 @@
 /testes
 composer.lock
 ._*
+.idea
