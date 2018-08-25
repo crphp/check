@@ -1,4 +1,9 @@
 # crphp/check
+
+<a href="https://packagist.org/packages/crphp/check"><img src="https://poser.pugx.org/crphp/check/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/crphp/check"><img src="https://poser.pugx.org/crphp/check/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/crphp/check"><img src="https://poser.pugx.org/crphp/check/license.svg" alt="License"></a>
+
 Está é uma biblioteca genérica voltada a efetuar testes/verificação de conectividade.
 
 Está biblioteca segue os padrões descritos na [PSR-2](http://www.php-fig.org/psr/psr-2/), logo, 
@@ -15,26 +20,27 @@ As palavras-chave "DEVE", "NÃO DEVE", "REQUER", "DEVERIA", "NÃO DEVERIA", "POD
 1. [Exemplos de uso](#exemplos)
 1. [Licença (MIT)](#licenca)
 
-## 1 - <a id="referencias"></a>Referências
- - [PSR-1](http://www.php-fig.org/psr/psr-1/)
- - [PSR-2](http://www.php-fig.org/psr/psr-2/)
- - [RFC 2119](http://tools.ietf.org/html/rfc2119). Tradução livre [RFC 2119 pt-br](http://rfc.pt.webiwg.org/rfc2119)
+## 1 - <a name="referencias"></a>Referências
 
-## 2 - <a id="funcionalidades"></a>Funcionalidades
+- [PSR-1](http://www.php-fig.org/psr/psr-1/)
+- [PSR-2](http://www.php-fig.org/psr/psr-2/)
+- [RFC 2119](http://tools.ietf.org/html/rfc2119) (tradução livre [RFC 2119 pt-br](http://rfc.pt.webiwg.org/rfc2119))
+
+## 2 - <a name="funcionalidades"></a>Funcionalidades
+
 - [x] Health Check
 - [x] Ping
 - [x] Socket
 - [x] Tracert / Traceroute
 
-## 3 - <a id="requisitos">Requisitos (módulos)
-Os módulos abaixo se fazem necessário para que está biblioteca possa ser utilizada:
-- REQUER Curl
-- REQUER Socket
+## 3 - <a name="requisitos">Requisitos (módulos)
 
-**Obs:** Provavelmente você já tem instalado e ativo os módulos acima, porém, se algo der errado 
-você já sabe o que deve olhar primeiro ;)
+Os módulos abaixos já estão definidos no arquivo composer.json, isso significa que serão validados automaticamente.
 
-## 4 - <a id="download"></a>Baixando o pacote crphp/check
+- REQUER ext-curl
+- REQUER ext-sockets
+
+## 4 - <a name="download"></a>Baixando o pacote crphp/check
 
 Para a etapa abaixo estou pressupondo que você tenha o composer instalado e saiba utilizá-lo:
 ```
@@ -48,7 +54,7 @@ composer create-project --prefer-dist crphp/check nome_projeto
 
 Caso ainda não tenha o composer instalado, obtenha este em: https://getcomposer.org/download/
 
-## 5 - <a id="exemplos"></a>Exemplos de uso
+## 5 - <a name="exemplos"></a>Exemplos de uso
 
 **Obs:** este é um exemplo simples, funcionalidades adicionais estão disponíveis em cada pacote.
 
@@ -106,5 +112,5 @@ if (is_array($output)) {
 }
 ```
 
-## 6 - <a id="licenca">Licença (MIT)
-Para maiores informações, leia o arquivo de licença disponibilizado junto desta biblioteca.
+## 6 - <a name="licenca">Licença (MIT)
+Todo o conteúdo presente neste diretório segue o que determina a licença [MIT](https://github.com/fabiojaniolima/laraboot/blob/master/LICENSE).
