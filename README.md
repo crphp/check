@@ -53,28 +53,23 @@ Caso ainda não tenha o composer instalado, obtenha este em: https://getcomposer
 **Obs:** este é um exemplo simples, funcionalidades adicionais estão disponíveis em cada pacote.
 
 **Health Check**:
-```php
+```
 use Crphp\Check\HealthCheck;
 
 $obj = new HealthCheck;
 
-$obj->setURL("http://www.terra.com.br");
-$obj->setAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50"); //opcional
-$obj->setRedirect();
-$statusHttp = $obj->run();
-var_dump($statusHttp, $obj->buscarString('esportes'));
+$obj->setRequest("http://www.terra.com.br")
+    ->setAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50")
+    ->setRedirect()
+    ->doRequest();
 
-\\ ou fluent interface
-use Crphp\Check\HealthCheck;
+echo ($obj->searchString('esportes')) ? 'String encontrada!' : 'String não encontrada!' ;
 
-$obj = new HealthCheck;
+// Retorna um array contendo o cabeçalho da resposta
+// $obj->getHeader();
 
-$statusHttp = $obj->setURL("http://www.terra.com.br")
-                    ->setAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50")
-                    ->setRedirect()
-                    ->run();
-
-var_dump($statusHttp, $obj->buscarString('esportes'));
+// Ao manter htmlentities o código html será mostrado. Ao omitir htmlentities o conteúdo será renderizado no navegador.
+// echo htmlentities($obj->getResponse());
 ```
 
 **Ping**
