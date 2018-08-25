@@ -112,5 +112,5 @@ if (is_array($output)) {
 }
 ```
 
-## 6 - <a name="licenca">Licença (MIT)
-Todo o conteúdo presente neste diretório segue o que determina a licença [MIT](https://github.com/fabiojaniolima/laraboot/blob/master/LICENSE).
+## 6 - <a name="licenca"></a>Licença (MIT)
+Todo o conteúdo presente neste diretório segue o que determina a licença [MIT](https://github.com/crphp/check/blob/master/LICENSE).
