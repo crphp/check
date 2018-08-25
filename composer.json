@@ -2,7 +2,7 @@
     "name": "crphp/check",
     "type": "library",
     "description": "Está é uma biblioteca genérica voltada a efetuar testes/verificação de conectividade",
-    "keywords": ["traceroute", "tracert", "ping", "health check", "socket"],
+    "keywords": ["traceroute", "tracert", "ping", "health check", "socket", "curl"],
     "license": "MIT",
     "support": {
         "issues": "https://github.com/crphp/check/issues",
@@ -15,7 +15,9 @@
         }
     ],
     "require": {
-        "php": ">=5.5.12"
+        "php": ">=5.5.9",
+        "ext-curl": "*",
+        "ext-sockets": "*"
     },
     "autoload": {
         "psr-4": {
