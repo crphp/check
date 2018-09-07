@@ -154,12 +154,11 @@ class HealthCheck
      */
     public function getHeader()
     {
-        $raw = $this->info;
         return [
-            'raw_info'      => $raw,
-            'status'        => $raw['http_code'],
-            'time'          => round($raw['total_time'] * 1000) . ' ms',
-            'size'          => round($raw['size_upload'] / 1024, 2) . ' KB',
+            'raw_info'      => $this->info,
+            'http_code'     => $this->info['http_code'],
+            'total_time'    => round($this->info['total_time'] * 1000) . ' ms',
+            'size_upload'   => round($this->info['size_upload'] / 1024, 2) . ' KB',
         ];
     }
 
