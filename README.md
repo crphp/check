@@ -74,6 +74,9 @@ echo ($obj->searchString('esportes')) ? 'String encontrada!' : 'String não enco
 // Retorna um array contendo o cabeçalho da resposta
 // $obj->getHeader();
 
+// Retorna uma string contendo código http + mensagem de acordo com a 
+// $obj->getHeader()['raw_info']['http_code'] . ' ' . $obj->getHeader()['http_code_message'];
+
 // Ao manter htmlentities o código html será mostrado. Ao omitir htmlentities o conteúdo será renderizado no navegador.
 // echo htmlentities($obj->getResponse());
 ```
